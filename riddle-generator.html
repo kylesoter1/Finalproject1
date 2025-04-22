@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riddle Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f7;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    header {
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #2c3e50;
+    }
+
+    .riddle-container {
+      text-align: center;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      max-width: 400px;
+    }
+
+    .riddle {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+    }
+
+    .answer {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #27ae60;
+      margin-top: 10px;
+      display: none;
+    }
+
+    button {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Riddle Generator</h1>
+  </header>
+  <main>
+    <div class="riddle-container">
+      <div class="riddle">Click "Generate Riddle" to start!</div>
+      <div class="answer"></div>
+      <button id="generateRiddle">Generate Riddle</button>
+      <button id="revealAnswer" style="display: none;">Reveal Answer</button>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 Riddle Generator App</p>
+  </footer>
+
+  <script>
+    const riddles = [
+      { question: "What has to be broken before you can use it?", answer: "An egg" },
+      { question: "I’m tall when I’m young, and I’m short when I’m old. What am I?", answer: "A candle" },
+      { question: "What month of the year has 28 days?", answer: "All of them" },
+      { question: "What is full of holes but still holds water?", answer: "A sponge" },
+      { question: "What question can you never answer yes to?", answer: "Are you asleep yet?" },
+      { question: "What is always in front of you but can’t be seen?", answer: "The future" },
+      { question: "I’m light as a feather, yet the strongest person can’t hold me for five minutes. What am I?", answer: "Your breath" },
+      { question: "What goes up but never comes down?", answer: "Your age" },
+      { question: "A man who was outside in the rain without an umbrella or hat didn’t get a single hair on his head wet. Why?", answer: "He was bald." },
+      { question: "What gets wet while drying?", answer: "A towel" }
+    ];
+
+    const riddleElement = document.querySelector(".riddle");
+    const answerElement = document.querySelector(".answer");
+    const generateButton = document.getElementById("generateRiddle");
+    const revealButton = document.getElementById("revealAnswer");
+
+    generateButton.addEventListener("click", () => {
+      const randomIndex = Math.floor(Math.random() * riddles.length);
+      const selectedRiddle = riddles[randomIndex];
+      riddleElement.textContent = selectedRiddle.question;
+      answerElement.textContent = selectedRiddle.answer;
+      answerElement.style.display = "none";
+      revealButton.style.display = "inline-block";
+    });
+
+    revealButton.addEventListener("click", () => {
+      answerElement.style.display = "block";
+    });
+  </script>
+</body>
+</html>
